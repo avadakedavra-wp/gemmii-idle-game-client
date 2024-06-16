@@ -1,12 +1,27 @@
 import type { NextPage } from 'next';
+import { useEffect, useMemo } from 'react';
 import Layout from './_compoents/layouts';
 import Dashboard from './_compoents/dashboard';
 import styles from "../styles/Home.module.css";
-
+import { useRouter } from 'next/router';
 // web3 components
-import { ConnectWallet } from '@thirdweb-dev/react';
+import { 
+  ConnectWallet,
+  useAccounts,
+  useContract,
+  useAddress
+} from '@thirdweb-dev/react';
 
 const Home: NextPage = () => {
+  const address = useAddress();
+  const router = useRouter()
+
+  useEffect(() => {
+    if (address) {
+      router.push('/gemmi-project')
+    }
+  }, [address]);
+
   return (
     <Layout>
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">

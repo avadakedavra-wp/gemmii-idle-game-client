@@ -16,7 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     return (
         <div className="min-h-screen bg-custom-pattern flex flex-col">
             <header className="bg-gray-900 text-white py-4 flex justify-between items-center px-4 md:px-8">
-                <div className="text-lg font-bold">Your Logo</div>
+                <div className="text-lg font-bold">GEMMII</div>
                 <nav className="hidden md:flex space-x-4">
                     <ul className="flex space-x-4">
                         <li><a href="#" className="hover:underline">Games</a></li>
