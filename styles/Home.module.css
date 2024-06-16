@@ -27,7 +27,7 @@
 }
 
 .gradientText3 {
-  background: -webkit-linear-gradient(#c35ab1, #e9a8d9);
+  background: -webkit-linear-gradient(#98DE5B, #08E1AE);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -42,7 +42,7 @@
 
 .title {
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 .title,
