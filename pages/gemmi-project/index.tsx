@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import Image from "next/image"; // Import the Image component from the appropriate package
+import React, { useCallback, useState } from "react";
+import Image from "next/image";
 
-import { useAddress, ConnectWallet } from "@thirdweb-dev/react";
+import { useAddress, ConnectWallet, useDisconnect, lightTheme } from "@thirdweb-dev/react";
 import Dashboard from "../_compoents/dashboard";
 import Layout from "../_compoents/layouts";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { useTheme, useSetTheme } from "../../store/useThemeStore";
+import styles from "../../styles/Home.module.css";
 
 // constant
 import { TTabsList } from "./constant";
-
+import useRankStore from "../../store/useRankStore";
 
 const tabsList: TTabsList[] = [
     {
@@ -37,8 +39,8 @@ const tabsList: TTabsList[] = [
     },
 ];
 
+
 function GemmiProject() {
-    const addreses = useAddress();
     const [activeTab, setActiveTab] = useState('Dashboard');
 
     const handleTabClick = (tabName: string) => {
@@ -62,45 +64,58 @@ function GemmiProject() {
 
     return (
         <Layout>
-            {/* Main content area */}
-            <div className="flex-grow h text-white">
+            <div className="flex flex-col bg-background-card min-h-screen text-white">
                 {/* Header */}
                 <div className="flex justify-between items-center p-4">
-                    <h1 className="text-xl font-semibold">GEMMII</h1>
-                    <div className="flex gap-4">
-                        <ConnectWallet />
+                    <div className="flex items-center">
+                        <span className="gradientText3 text-3xl text-center">
+                            <a
+                                href="https://jibjib.io/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-blue-600 font-bold text-center"
+                            >
+                                JIBTAP.
+                            </a>
+                        </span>
+                    </div>
+                    <ConnectWallet
+                        theme={lightTheme({
+                            colors: {
+                                primaryButtonBg: "#c6a9a3",
+                                accentButtonText: "#fdfcfd",
+                                primaryButtonText: "#1a1523",
+                                secondaryIconColor: "#706f78",
+                            },
+                        })}
+                        style={{
+                            borderRadius: '25px',
+                            border: '2px solid #000000',
+                        }}
+                    />
+                </div>
+                {/* Content */}
+                {ActiveComponent()}
+                {/* Footer Navbar */}
+                <div className="flex justify-center items-center p-4">
+                    <div className="flex justify-around items-center bg-background-card h-auto p-1 shadow-2xl" style={{ borderRadius: '25px', border: '2px solid #000000' }}>
+                        {tabsList.map((tab) => (
+                            <div
+                                key={tab.name}
+                                className={`flex flex-col items-center justify-center p-2 m-1 shadow-md ${activeTab === tab.name
+                                    ? 'bg-white text-black border border-black'
+                                    : 'bg-background-dark text-yellow-light hover:bg-background-light hover:text-yellow-primary'
+                                    }`}
+                                style={{ width: '82px', height: '64px', borderRadius: '25px' }}
+                                onClick={() => handleTabClick(tab.name)}
+                            >
+                                <i className={`${tab.icon}`}></i>
+                                <span className="text-sm font-medium">{tab.name}</span>
+                            </div>
+                        ))}
                     </div>
                 </div>
-
-                {/* Main Content */}
-                <div className="mt-4">
-                    <ActiveComponent />
-                </div>
             </div>
-
-            {/* Footer navigation bar */}
-            <footer className="bg-gray-800 h-full shadow-md">
-                <nav className="flex justify-around item-center alight-center">
-                    {tabsList.map((tab) => (
-                        <div
-                            key={tab.name}
-                            className={`flex flex-col items-center justify-center p-4 rounded-lg shadow-md ${activeTab === tab.name
-                                ? 'bg-gray-800 text-yellow-500 border border-yellow-500'
-                                : 'bg-gray-700 text-gray-300 hover:bg-gray-800 hover:text-yellow-400'
-                                }`}
-                            style={{ minWidth: '40px', minHeight: '40px' }} // Set minimum width and height
-                            onClick={() => handleTabClick(tab.name)}
-                        >
-                            {tab.icon === 'logo' ? (
-                                <Image src="/images/character-gif-1.gif" alt="logo" width={30} height={20} /> // Use the Image component correctly
-                            ) : (
-                                <i className={`${tab.icon}`}></i>
-                            )}
-                            <span className="text-sm font-medium">{tab.name}</span>
-                        </div>
-                    ))}
-                </nav>
-            </footer>
         </Layout>
     );
 }

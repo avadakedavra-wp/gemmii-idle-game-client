@@ -11,24 +11,36 @@
     "deploy": "next build && next export && npx thirdweb@latest upload out"
   },
   "dependencies": {
+    "@apollo/client": "^3.10.8",
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^3.6.0",
     "@thirdweb-dev/react": "^4",
     "@thirdweb-dev/sdk": "^4",
+    "apollo-server-micro": "^3.13.0",
     "autoprefixer": "^10.4.19",
     "ethers": "^5",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
+    "graphql-tag": "^2.12.6",
     "next": "^13",
     "postcss": "^8.4.38",
     "react": "^18.2",
     "react-countdown": "^2.3.5",
     "react-dom": "^18.2",
-    "tailwindcss": "^3.4.4"
+    "react-hook-form": "^7.52.0",
+    "react-sound": "^1.2.0",
+    "tailwindcss": "^3.4.4",
+    "use-sound": "^4.0.3",
+    "yup": "^1.4.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.11",
     "@types/react": "^18",
+    "@types/react-sound": "^1.2.6",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13",
     "typescript": "^4.9.4"

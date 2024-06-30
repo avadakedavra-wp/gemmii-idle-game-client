@@ -1,6 +1,4 @@
 import React, { useState, ReactNode } from 'react';
-import Image from 'next/image';
-import backgroundImage from '../public/background.png'; // Adjust the path
 
 type LayoutProps = {
     children: ReactNode;
@@ -46,7 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </div>
             )}
             <main className="flex-grow flex items-center justify-center">
-                <div className="relative w-[414px] h-[896px] bg-black rounded-md shadow-lg overflow-hidden">
+                <div className="relative w-[414px] h-[896px] rounded-md shadow-lg overflow-hidden" style={{ backgroundColor: "#fffcbc"}}>
                     {children}
                 </div>
             </main>

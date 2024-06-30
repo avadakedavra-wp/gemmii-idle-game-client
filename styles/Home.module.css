@@ -27,10 +27,14 @@
 }
 
 .gradientText3 {
-  background: -webkit-linear-gradient(#98DE5B, #08E1AE);
+  background: -webkit-linear-gradient(#FFDEA8, #FEC84E);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.bg-custom-pattern {
+  background: linear-gradient(45deg, #c9a7a0 50%, #f8f5c4 50%);
 }
 
 .title a:hover,
